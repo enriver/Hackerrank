@@ -26,7 +26,7 @@ def bfs(n, m, edges, s):
     que.append(s)
 
     while que:
-        pos=que.pop()
+        pos=que.popleft()
 
         for i in range(1, n+1):
             if graphs[pos][i]==1 and i not in visit:
@@ -35,7 +35,7 @@ def bfs(n, m, edges, s):
                 if dist[i]==0:
                     dist[i]=dist[pos]+6
                 else:
-                    dist[i]=min(dist[i],dist[pos]+1)
+                    dist[i]=min(dist[i],dist[pos]+6)
 
                 que.append((i))
 
