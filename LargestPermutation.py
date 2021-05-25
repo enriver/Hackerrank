@@ -2,6 +2,9 @@
 
 import sys
 
+'''
+TimeOut
+
 def largestPermutation(K,ARR):
     idx=0
     while True:
@@ -25,6 +28,29 @@ def largestPermutation(K,ARR):
             ARR[max_idx]=temp
             K-=1
             idx+=1
+
+    return ARR
+'''
+def largestPermutation(K,ARR):
+    index=[0 for _ in range(n+1)]
+    for i in range(n):
+        index[ARR[i]]=i
+    
+    for i in range(n):
+        if K==0:
+            break
+
+        if i!=index[n-i]: # 현재 인덱스가 최대값의 인덱스인지 확인
+            temp=ARR[i]
+            ARR[i]=n-i
+            ARR[index[n-i]]=temp
+
+            index[temp]=index[n-i]
+            index[n-i]=i
+
+            K-=1
+        else:
+            continue
 
     return ARR
 
